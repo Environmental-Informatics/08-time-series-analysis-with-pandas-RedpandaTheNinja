@@ -43,7 +43,7 @@ heightest =  heightest.iloc[0:10]
 # Create figure and plot space
 fig, ax = plt.subplots(figsize=(10, 10))
 
-# Add x-axis and y-axis
+# Add x-axis and y-axis 
 ax.scatter(heightest.index.values,
            heightest['01_00060'],
            color='blue')
