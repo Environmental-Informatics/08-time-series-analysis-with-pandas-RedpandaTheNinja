@@ -76,3 +76,5 @@ ax.set(xlabel="Date",
        title="Monthly Average ")
 
 plt.show()
+print("hi")
+print("test2")

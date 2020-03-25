@@ -1,0 +1,77 @@
+added sample figures
+
+# --------------
+# Please enter the commit message for your changes. Everything below
+# this paragraph is ignored, and an empty message aborts the commit.
+# Just close the window to accept your message.
+diff --git a/Annual_medi.pdf b/Annual_medi.pdf
+new file mode 100644
+index 0000000..cdcc9c2
+Binary files /dev/null and b/Annual_medi.pdf differ
+diff --git a/Daily_AO.pdf b/Daily_AO.pdf
+new file mode 100644
+index 0000000..492b7cf
+Binary files /dev/null and b/Daily_AO.pdf differ
+diff --git a/PandasDatesDemo.py b/PandasDatesDemo.py
+index fe4f8d5..c67ad5e 100644
+--- a/PandasDatesDemo.py
++++ b/PandasDatesDemo.py
+@@ -26,6 +26,13 @@ import matplotlib.pyplot as plt
+ # AO['1980-05':'1981-03'].plot()
+ # plt.show()
+ 
++DayAO = AO.plot()
++DayAO.set(xlabel="Year",
++       ylabel="Oscillation Index",
++       title="Daily Atlantic Oscillation AO")
++DayAO.figure.savefig('Daily_AO.pdf')
++plt.close()
++
+ print(AO[120])
+ 
+ print(AO['1960-01'])
+@@ -87,8 +94,13 @@ AO_mm = AO.resample("A").mean()
+ # plt.show()
+ 
+ AO_mm = AO.resample("A").median()
+-# AO_mm.plot()
++MediMon=AO_mm.plot()
+ # plt.show()
++MediMon.set(xlabel="Year",
++       ylabel="Oscillation Index",
++       title="Annual Median Atlantic Oscillation AO")
++MediMon.figure.savefig('Annual_medi.pdf')
++plt.close()
+ 
+ AO_mm = AO.resample("3A").apply(np.max)
+ # AO_mm.plot()
+@@ -101,8 +113,12 @@ AO_mm = AO.resample("A").apply(['mean', np.min, np.max])
+ 
+ print(AO_mm)
+ 
+-# aonao.rolling(window=12, center=False).mean().plot(style='-g')
+-# plt.show()
++rollilol= aonao.rolling(window=12, center=False).mean().plot()
++rollilol.set(xlabel="Year",
++       ylabel="Oscillation Index",
++       title="Rolling Mean Atlantic Oscillation AO & NAO")
++rollilol.figure.savefig('Rolling_mean.pdf')
++plt.close()
+ 
+ # aonao.AO.rolling(window=120).corr(other=aonao.NAO).plot(style='-g')
+ # plt.show()
+diff --git a/Rolling_mean.pdf b/Rolling_mean.pdf
+new file mode 100644
+index 0000000..df1a90f
+Binary files /dev/null and b/Rolling_mean.pdf differ
+diff --git a/program-08.py b/program-08.py
+index de44070..651d124 100644
+--- a/program-08.py
++++ b/program-08.py
+@@ -75,4 +75,4 @@ ax.set(xlabel="Date",
+        ylabel="Discharge, cubic feet per second",
+        title="Monthly Average ")
+ 
+-plt.show()
+\ No newline at end of file
++plt.show()

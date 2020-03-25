@@ -26,6 +26,13 @@ import matplotlib.pyplot as plt
 # AO['1980-05':'1981-03'].plot()
 # plt.show()
 
+DayAO = AO.plot()
+DayAO.set(xlabel="Year",
+       ylabel="Oscillation Index",
+       title="Daily Atlantic Oscillation AO")
+DayAO.figure.savefig('Daily_AO.pdf')
+plt.close()
+
 print(AO[120])
 
 print(AO['1960-01'])
@@ -87,8 +94,13 @@ AO_mm = AO.resample("A").mean()
 # plt.show()
 
 AO_mm = AO.resample("A").median()
-# AO_mm.plot()
+MediMon=AO_mm.plot()
 # plt.show()
+MediMon.set(xlabel="Year",
+       ylabel="Oscillation Index",
+       title="Annual Median Atlantic Oscillation AO")
+MediMon.figure.savefig('Annual_medi.pdf')
+plt.close()
 
 AO_mm = AO.resample("3A").apply(np.max)
 # AO_mm.plot()
@@ -101,8 +113,12 @@ AO_mm = AO.resample("A").apply(['mean', np.min, np.max])
 
 print(AO_mm)
 
-# aonao.rolling(window=12, center=False).mean().plot(style='-g')
-# plt.show()
+rollilol= aonao.rolling(window=12, center=False).mean().plot()
+rollilol.set(xlabel="Year",
+       ylabel="Oscillation Index",
+       title="Rolling Mean Atlantic Oscillation AO & NAO")
+rollilol.figure.savefig('Rolling_mean.pdf')
+plt.close()
 
 # aonao.AO.rolling(window=120).corr(other=aonao.NAO).plot(style='-g')
 # plt.show()
